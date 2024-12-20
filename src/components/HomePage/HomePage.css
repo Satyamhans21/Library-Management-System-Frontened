@@ -1,0 +1,44 @@
+.home-page {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .main-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 2.5rem;
+  }
+  
+  .books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
+  
+  .book-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .book-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .book-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
