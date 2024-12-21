@@ -5,6 +5,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import ProfilePage from './components/ProfilePage/Profile';
 import IssueBookPage from './components/IssueBookPage';
+import AddBookPage from './components/AddBookPage';  // Import your AddBookPage component
+import UpdateBookPage from './components/UpdateBookPage';
+import DeleteBookPage from './components/DeleteBookPage';
 
 function App() {
   // Check if the user is authenticated by checking the token in localStorage
@@ -33,6 +36,9 @@ function App() {
           element={isAuthenticated() ? <ProfilePage /> : <Navigate to="/login" replace />} 
         />
          <Route path="/issue-book" element={<IssueBookPage />} /> {/* Issue Book Page */}
+         <Route path="/add-book" element={<AddBookPage />} />  {/* Add Book Page */}
+         <Route path="/update-book" element={<UpdateBookPage />} />
+         <Route path="/delete-book" element={<DeleteBookPage />} />
       </Routes>
     </Router>
   );
