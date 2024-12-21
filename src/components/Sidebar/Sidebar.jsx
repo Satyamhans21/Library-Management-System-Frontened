@@ -1,14 +1,24 @@
 import React from 'react';
-import './Sidebar.css'; // Custom CSS for sidebar styling
+import { Link } from 'react-router-dom'; // Import Link from React Router
+import './Sidebar.css'; // Importing the CSS file
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h3>Navigation</h3>
-      <button>Profile</button>
-      <button>Issue a Book</button>
-      <button>Return Book</button>
-      <button>Logout</button>
+      <ul className="sidebar-menu">
+        <li className="menu-item">
+          <Link to="/profile" className="menu-link">Profile</Link>
+        </li>
+        <li className="menu-item">
+          <Link to="/issue-book" className="menu-link">Issue Book</Link>
+        </li>
+        <li className="menu-item">
+          <Link to="/return-book" className="menu-link">Return Book</Link>
+        </li>
+        <li className="menu-item">
+          <Link to="/logout" className="menu-link">Logout</Link>
+        </li>
+      </ul>
     </div>
   );
 };
