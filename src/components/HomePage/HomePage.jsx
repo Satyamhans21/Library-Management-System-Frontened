@@ -60,6 +60,7 @@ const HomePage = () => {
           <table className="books-table">
             <thead>
               <tr>
+                <th>BookID</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Edition</th>
@@ -74,6 +75,7 @@ const HomePage = () => {
               {filteredBooks.length > 0 ? (
                 filteredBooks.map((book) => (
                   <tr key={book.id}>
+                    <td>{book.bookId}</td>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
                     <td>{book.edition}</td>
