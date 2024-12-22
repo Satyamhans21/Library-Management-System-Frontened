@@ -3,7 +3,7 @@ import axios from 'axios';
 import './IssueBookPage.css'; // Optional: Add your styles here
 
 const IssueBookPage = () => {
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [bookId, setBookId] = useState('');
   const [borrowedDate, setBorrowedDate] = useState('');
   const [dueDate, setDueDate] = useState(''); // State for due date
@@ -14,13 +14,13 @@ const IssueBookPage = () => {
     e.preventDefault();
 
     // Validate form fields
-    if (!userId || !bookId || !dueDate) { // Due date is now required
-      setError('User ID, Book ID, and Due Date are required.');
+    if (!bookId || !dueDate) { // Due date is now required
+      setError('Book ID, and Due Date are required.');
       return;
     }
 
     const requestData = {
-      userId: parseInt(userId),
+      // userId: parseInt(userId),
       bookId: parseInt(bookId),
       borrowedDate: borrowedDate || null, // If empty, let backend set the current date
       dueDate: dueDate, // Add due date here
@@ -58,16 +58,6 @@ const IssueBookPage = () => {
       {message && <div className="success-message">{message}</div>}
       {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit} className="issue-book-form">
-        <div className="form-group">
-          <label htmlFor="userId">User ID</label>
-          <input
-            type="number"
-            id="userId"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-            required
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="bookId">Book ID</label>
           <input
