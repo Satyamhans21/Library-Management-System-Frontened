@@ -1,16 +1,26 @@
 /* Sidebar container */
 .sidebar {
-    width: 250px;
-    height: 100vh; /* Full viewport height */
-    background-color: #1e272e; /* A sleek dark color */
+    width: 300px;
+    height: 96vh; /* Full viewport height */
+    background-color: #1e272e; /* Sleek dark color */
     position: fixed; /* Sticks the sidebar to the left */
-    top: 0;
-    left: 0;
+    /* top: 0; */
+    /* left: 0; */
     display: flex;
     flex-direction: column; /* Vertical layout */
-    padding: 20px 0; /* Add vertical padding */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-    overflow: hidden; /* Ensures no overflow content */
+    padding: 20px 0; /* Vertical padding */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    /* overflow: hidden;  */
+    /* Ensures no overflow content */
+}
+
+/* Sidebar title styling */
+.sidebar-title {
+    font-size: 1.6rem;
+    color: #ecf0f1; /* Light text color */
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    text-align: center;
 }
 
 /* Sidebar menu container */
@@ -18,18 +28,17 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 100%;
-    flex-grow: 1; /* Takes up all available vertical space */
+    flex-grow: 1; /* Space evenly in the middle */
     display: flex;
     flex-direction: column; /* Vertical layout */
-    justify-content: space-between; /* Space items evenly from top to bottom */
-    align-items: center;
+    gap: 15px; /* Adds spacing between items */
+    /* align-items: center;  */
 }
 
 /* Individual menu items */
 .menu-item {
-    padding: 15px 20px;
-    width: 90%; /* Keeps menu items consistent */
+    padding: 5px 10px;
+    /* width: 90%; */
     color: #f5f6fa; /* Off-white color for text */
     font-size: 1.1rem;
     font-weight: 500;
@@ -41,35 +50,31 @@
 }
 
 .menu-item:hover {
-    background-color: #34495e; /* A slightly lighter dark color on hover */
-    transform: translateX(5px); /* Moves slightly to the right on hover */
-}
-
-/* Active link styling */
-.menu-item-active {
-    background-color: #2c3e50; /* Different background for active links */
-    font-weight: bold;
-}
-
-/* Sidebar footer for logout */
-.menu-footer {
-    margin-top: auto; /* Pushes logout to the bottom */
-    padding-bottom: 20px; /* Adds some space at the bottom */
-}
-
-/* Sidebar title styling */
-.sidebar-title {
-    font-size: 1.5rem;
-    color: #ecf0f1;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+    background-color: #34495e; /* Slightly lighter dark color on hover */
+    /* transform: translateX(1px);  */
+    /* Moves slightly to the right on hover */
 }
 
 /* Link styling for React Router */
 .menu-link {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Inherit text color */
-    width: 100%; /* Make the clickable area cover the whole menu item */
+    /* width: 100%; */
     display: block; /* Ensures the whole block is clickable */
+}
+
+/* Logout button styling */
+/* .menu-footer {
+    margin-top: auto; 
+    text-align: center;
+} */
+
+.menu-footer .menu-item {
+    /* width: 240px; */
+    background-color: #c0392b; /* Red background for logout */
+    color: white; /* White text for contrast */
+}
+
+.menu-footer .menu-item:hover {
+    background-color: #e74c3c; /* Lighter red on hover */
 }

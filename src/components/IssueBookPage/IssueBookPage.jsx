@@ -28,7 +28,7 @@ const IssueBookPage = () => {
     };
 
     // Get the token from localStorage
-    const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
+    const token = localStorage.getItem('authToken'); // Assuming the token is stored in localStorage
 
     if (!token) {
       setError('Authorization token not found.');

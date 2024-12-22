@@ -1,7 +1,7 @@
 /* Issue Book Page Styles */
 .issue-book-container {
     padding: 20px;
-    margin-left: 260px; /* Offset for the sidebar */
+    /* margin-left: 260px; */
     transition: margin-left 0.3s ease;
   }
   

@@ -9,25 +9,29 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate(); // To navigate after login
 
-  // Handle login form submission
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent form from reloading the page
-
+  
     try {
       const response = await axios.post('http://localhost:8080/api/authenticate/login', {
         username,
         password,
       });
-
-      // Save the token to localStorage
-      localStorage.setItem('token', response.data.accessToken);
-
+  
+      const { accessToken, userDto, adminDto } = response.data;
+  
+      // Save token and role information in localStorage
+      localStorage.setItem('authToken', accessToken);
+      localStorage.setItem('userRole', adminDto ? 'admin' : 'user');
+      localStorage.setItem('userData', JSON.stringify(adminDto || userDto)); // Save user data for later use
+  
       // Redirect to home page after successful login
       navigate('/home');
     } catch (err) {
       setError('Invalid credentials. Please try again.'); // Show error message
     }
   };
+  
 
   return (
     <div className="login-container">

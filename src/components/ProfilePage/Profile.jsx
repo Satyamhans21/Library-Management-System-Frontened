@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../Sidebar/Sidebar'; // Import Sidebar component
 import './ProfilePage.css'; // Importing the CSS file
+import { FaUserCircle } from 'react-icons/fa'; // Importing a user icon for profile picture fallback
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -10,7 +11,7 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('authToken');
         if (!token) {
           setError('User is not logged in');
           return;
@@ -50,19 +51,20 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <Sidebar /> {/* Sidebar Component */}
       <div className="profile-content">
         <h1 className="profile-title">User Profile</h1>
         <div className="profile-card">
-          {user.profilePicture ? (
-            <img
-              src={user.profilePicture}
-              alt={`${user.name}'s profile`}
-              className="profile-picture"
-            />
-          ) : (
-            <div className="placeholder-picture">No Picture Available</div>
-          )}
+          <div className="profile-picture">
+            {user.profilePicture ? (
+              <img
+                src={user.profilePicture}
+                alt={`${user.name}'s profile`}
+                className="profile-image"
+              />
+            ) : (
+              <FaUserCircle size={100} color="#ccc" />
+            )}
+          </div>
           <div className="profile-details">
             <p><strong>Name:</strong> {user.name}</p>
             <p><strong>Username:</strong> {user.username}</p>

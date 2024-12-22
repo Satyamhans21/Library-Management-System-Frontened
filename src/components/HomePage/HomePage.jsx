@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('authToken');
         const headers = {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <Sidebar /> {/* Sidebar Component */}
+      
       <div className="home-page">
         <h1 className="home-title">Library Management System</h1>
         <h2 className="list-title">List of Books</h2>

@@ -1,0 +1,19 @@
+.authenticated-layout {
+  display: flex;
+  height: 100vh; /* Ensure the layout takes full height */
+  /* align-items: center; */
+  gap:20px;
+}
+
+.sidebar {
+  /* width: 324px; */
+  /* background-color: #f4f4f4; */
+  padding: 20px; /* Optional, add padding for spacing */
+}
+
+.content {
+  margin-left: 340px;
+  width: 80%; /* Content takes up 80% of the width */
+  padding: 20px; /* Optional, add padding for spacing */
+  overflow-y: auto; /* Ensure the content is scrollable if it exceeds the height */
+}
