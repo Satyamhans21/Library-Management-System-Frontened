@@ -22,7 +22,7 @@ const ReturnBookPage = () => {
           Authorization: `Bearer ${token}`,
         };
 
-        const response = await axios.get("http://localhost:8080/borrowed-books", {
+        const response = await axios.get("http://localhost:8080/borrowed-books/my-books", {
           headers,
         });
 

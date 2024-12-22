@@ -43,7 +43,7 @@ const IssueBookPage = () => {
         },
       });
 
-      setMessage(`Book issued successfully! Borrowed Book ID: ${response.data.id}`);
+      setMessage(`Book issued successfully! Borrowed Book ID: ${response.data.bookId}`);
       setError('');
     } catch (err) {
       console.error(err);
