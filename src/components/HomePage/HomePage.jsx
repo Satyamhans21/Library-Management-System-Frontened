@@ -1,81 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Sidebar from '../Sidebar/Sidebar'; // Import Sidebar component
-import './HomePage.css'; // Importing the CSS file
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Sidebar from "../Sidebar/Sidebar"; // Import Sidebar component
+import "./HomePage.css";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState('');
-  const [selectedBook, setSelectedBook] = useState(null); // State to store the selected book
+  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem("authToken");
         const headers = {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         };
-        
-        const response = await axios.get('http://127.0.0.1:8080/books', { headers, withCredentials: true });
+
+        const response = await axios.get("http://127.0.0.1:8080/books", { headers, withCredentials: true });
         setData(response.data);
       } catch (err) {
         console.error(err);
-        setError('Failed to fetch data');
+        setError("Failed to fetch data");
       }
     };
 
     fetchData();
   }, []);
 
-  // Function to handle book click and toggle the book details visibility
-  const handleBookClick = (book) => {
-    setSelectedBook(book); // Set the selected book on click
-    const detailsElement = document.querySelector(`.book-details-${book.id}`);
-    detailsElement.classList.toggle('show'); // Toggle the 'show' class to expand/collapse details
-  };
+  // Filtered books based on the search query
+  const filteredBooks = data.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.genre.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="home-container">
-      
       <div className="home-page">
         <h1 className="home-title">Library Management System</h1>
         <h2 className="list-title">List of Books</h2>
+
         {error && <p className="error-message">{error}</p>}
-        
-        {/* Display books in a grid */}
-        <div className="book-grid">
-          {data.map(item => (
-            <div 
-              key={item.id} 
-              className="book-box" 
-              onClick={() => handleBookClick(item)} // Handle click on the book
-            >
-              <h3 className="book-title">{item.title}</h3>
-              <p className="book-author">Author: {item.author}</p>
-              <p className="book-edition">Edition: {item.edition}</p>
-              <p className="book-genre">Genre: {item.genre}</p>
-            </div>
-          ))}
+
+        {/* Search Bar */}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search by title, author, or genre..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
 
-        {/* Display selected book details with dynamic class for each book */}
-        {data.map(item => (
-          <div 
-            key={item.id} 
-            className={`book-details book-details-${item.id}`}
-          >
-            <h3>Book Details</h3>
-            <p><strong>Title:</strong> {item.title}</p>
-            <p><strong>Author:</strong> {item.author}</p>
-            <p><strong>Edition:</strong> {item.edition}</p>
-            <p><strong>Genre:</strong> {item.genre}</p>
-            <p><strong>Language:</strong> {item.language}</p>
-            <p><strong>Publisher:</strong> {item.publisher}</p>
-            <p><strong>Cost:</strong> {item.cost}</p>
-            <p><strong>ISBN:</strong> {item.isbn}</p>
-          </div>
-        ))}
+        {/* Books Table */}
+        <div className="table-container">
+          <table className="books-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Edition</th>
+                <th>Genre</th>
+                <th>Language</th>
+                <th>Publisher</th>
+                <th>Cost</th>
+                <th>ISBN</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredBooks.length > 0 ? (
+                filteredBooks.map((book) => (
+                  <tr key={book.id}>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.edition}</td>
+                    <td>{book.genre}</td>
+                    <td>{book.language}</td>
+                    <td>{book.publisher}</td>
+                    <td>{book.cost}</td>
+                    <td>{book.isbn}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="8">No books found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
