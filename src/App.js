@@ -12,6 +12,8 @@ import AuthenticatedLayout from './layouts/AuthenticatedLayout';
 import UnauthenticatedLayout from './layouts/UnauthenticatedLayout';
 import { isAuthenticated, isAdmin, isUser } from './utils/authUtils';
 import ReturnBookPage from './components/ReturnBookPage/ReturnBookPage';
+import UpdateBookPage from './components/UpdateBookPage/UpdateBookPage';
+import DeleteBookPage from './components/DeleteBookPage/DeleteBookPage';
 
 function App() {
   return (
@@ -33,6 +35,22 @@ function App() {
               element={
                 <AuthenticatedLayout>
                   <AddBookPage />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/update-book"
+              element={
+                <AuthenticatedLayout>
+                  <UpdateBookPage />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/delete-book"
+              element={
+                <AuthenticatedLayout>
+                  <DeleteBookPage />
                 </AuthenticatedLayout>
               }
             />

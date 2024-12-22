@@ -27,6 +27,12 @@ const Sidebar = () => {
               <Link to="/add-book" className="menu-link">Add Book</Link>
             </li>
             <li className="menu-item">
+              <Link to="/update-book" className="menu-link">Update Book</Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/delete-book" className="menu-link">Delete Book</Link>
+            </li>
+            <li className="menu-item">
               <Link to="/add-catalog" className="menu-link">Add Catalog</Link>
             </li>
           </>
