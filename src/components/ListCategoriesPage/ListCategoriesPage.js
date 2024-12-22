@@ -8,8 +8,22 @@ const ListCategoriesPage = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
+      // Get the token from localStorage
+      const token = localStorage.getItem("authToken"); // Assuming the token is stored in localStorage
+
+      if (!token) {
+        setError("Authorization token not found.");
+        return;
+      }
+
       try {
-        const response = await axios.get("http://localhost:8080/categories");
+        const response = await axios.get("http://127.0.0.1:8080/categories", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        // const response = await axios.get("http://localhost:8080/categories");
         setCategories(response.data);
       } catch (err) {
         console.error(err);
