@@ -32,8 +32,11 @@ const Sidebar = () => {
             <li className="menu-item">
               <Link to="/delete-book" className="menu-link">Delete Book</Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/add-catalog" className="menu-link">Add Catalog</Link>
+            </li> */}
+            <li className="menu-item">
+              <Link to="/add-category" className="menu-link">Add Category</Link>
             </li>
           </>
         )}
@@ -47,6 +50,9 @@ const Sidebar = () => {
             </li>
             <li className="menu-item">
               <Link to="/return-book" className="menu-link">Return Book</Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/list-categories" className="menu-link">List Categories</Link>
             </li>
           </>
         )}

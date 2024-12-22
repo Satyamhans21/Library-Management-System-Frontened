@@ -14,6 +14,8 @@ import { isAuthenticated, isAdmin, isUser } from './utils/authUtils';
 import ReturnBookPage from './components/ReturnBookPage/ReturnBookPage';
 import UpdateBookPage from './components/UpdateBookPage/UpdateBookPage';
 import DeleteBookPage from './components/DeleteBookPage/DeleteBookPage';
+import AddCategoryPage from './components/AddCategoryPage/AddCategoryPage';
+import ListCategoriesPage from './components/ListCategoriesPage/ListCategoriesPage';
 
 function App() {
   return (
@@ -62,6 +64,14 @@ function App() {
                 </AuthenticatedLayout>
               }
             />
+            <Route
+              path="/add-category"
+              element={
+                <AuthenticatedLayout>
+                  <AddCategoryPage />
+                </AuthenticatedLayout>
+              }
+            />
           </>
         )}
 
@@ -97,6 +107,14 @@ function App() {
               element={
                 <AuthenticatedLayout>
                   <ReturnBookPage />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/list-categories"
+              element={
+                <AuthenticatedLayout>
+                  <ListCategoriesPage />
                 </AuthenticatedLayout>
               }
             />
